@@ -1,0 +1,21 @@
+.form {
+  width: 300px;
+  padding: 10px;
+  border: black solid 1px;
+}
+.formLabel {
+  display: block;
+  margin-bottom: 10px;
+}
+.input {
+  display: block;
+}
+.wrap {
+  padding: 10px;
+  width: 300px;
+}
+.item {
+  margin-top: 10px;
+
+  justify-content: space-between;
+}
