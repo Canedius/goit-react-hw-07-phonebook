@@ -2,6 +2,7 @@ import React from 'react';
 import Form from './Form/Form'
 import ContactList from './Contacts/Contacts'
 import Filter from './Filter/Filter'
+import s from './Form/Form.module.css';
 export class App extends React.Component{
   state = {
     contacts: [
@@ -34,7 +35,7 @@ deleteContacts = id =>{
     render(){
       const normalizedFilter= this.state.filter.toLowerCase()
       const visibleContacts = this.state.contacts.filter(contact =>contact.name.toLowerCase().includes(normalizedFilter) )
-    return (<div>
+    return (<div className={s.wrap}>
       <h2>Phonebook</h2>
       <Form onSubmit={this.submitHandler} />
       <h2>Contacts</h2>
