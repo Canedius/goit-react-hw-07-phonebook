@@ -1,6 +1,6 @@
 import React from 'react';
 import Form from './Form/Form'
-import Contacts from './Contacts/Contacts'
+import ContactList from './Contacts/Contacts'
 import Filter from './Filter/Filter'
 export class App extends React.Component{
   state = {
@@ -35,12 +35,12 @@ deleteContacts = id =>{
       const normalizedFilter= this.state.filter.toLowerCase()
       const visibleContacts = this.state.contacts.filter(contact =>contact.name.toLowerCase().includes(normalizedFilter) )
     return (<div>
+      <h2>Phonebook</h2>
       <Form onSubmit={this.submitHandler} />
-      
-      <Contacts contacts={visibleContacts} deleteContacts={this.deleteContacts}>
+      <h2>Contacts</h2>
+      <ContactList contacts={visibleContacts} deleteContacts={this.deleteContacts}>
       <Filter value={this.state.filter} onChange ={this.chengeFilter}/>
-      </Contacts>
-
+      </ContactList>
     </div>)
     
   }

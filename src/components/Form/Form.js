@@ -28,7 +28,6 @@ export class Form extends React.Component {
   render() {
     return (
       <>
-        <h2>Phonebook</h2>
         <form className={s.form} onSubmit={this.handleSubmit}>
           <label className={s.formLabel}>
             {' '}

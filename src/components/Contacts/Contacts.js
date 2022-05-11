@@ -3,7 +3,6 @@ import s from '../Form/Form.module.css';
 function Contacts({ contacts, children, deleteContacts }) {
   return (
     <div className={s.wrap}>
-      <h2>Contacts</h2>
       {children}
       <ul>
         {contacts.map(({ id, name, number }) => {
