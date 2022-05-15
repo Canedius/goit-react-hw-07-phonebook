@@ -4,8 +4,8 @@ import s from './Form.module.css';
 import React from 'react';
 export class Form extends React.Component {
   state = {
-    name: '',
     id: nanoid(),
+    name: '',
     number: '',
   };
 
@@ -23,7 +23,7 @@ export class Form extends React.Component {
     this.reset();
   };
   reset = () => {
-    this.setState({ name: '', id: '', number: '' });
+    this.setState({ id: '', name: '', number: '' });
   };
   render() {
     return (
