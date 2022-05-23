@@ -36,9 +36,6 @@ const chengeFilter = e=>{
     localStorage.setItem(`contacts`,JSON.stringify(contacts))
  },[contacts])
 
-
-
-
       const normalizedFilter= filter.toLowerCase()
       const visibleContacts = contacts.filter(contact =>contact.name.toLowerCase().includes(normalizedFilter) )
     return (<div className={s.wrap}>
