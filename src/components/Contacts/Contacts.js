@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import s from '../Form/Form.module.css';
+import { connect } from 'react-redux';
+import { deleteContact } from 'redux/contacts/contact-action';
 function Contacts({ contacts, children, deleteContacts }) {
   return (
     <div className={s.wrap}>
@@ -28,4 +30,7 @@ Contacts.propTypes = {
   children: PropTypes.node,
   deleteContacts: PropTypes.func,
 };
-export default Contacts;
+const mapDispatchToprops = dispatch => ({
+  deleteContacts: id => dispatch(deleteContact(id)),
+});
+export default connect(null, mapDispatchToprops)(Contacts);
