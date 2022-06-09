@@ -5,6 +5,7 @@ import Filter from './Filter/Filter'
 import s from './Form/Form.module.css';
 import { connect } from 'react-redux';
 import { storage } from 'redux/contacts/contact-action';
+
  const App =({contacts,filter,setContacts})=>{
 
  useEffect(()=>{
