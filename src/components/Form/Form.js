@@ -2,12 +2,13 @@ import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
 import s from './Form.module.css';
 import { useState } from 'react';
-import { connect } from 'react-redux';
+import {useDispatch } from 'react-redux';
 import { addcontact } from 'redux/contacts/contact-action';
-export const Form = ({ onSubmit }) => {
+export const Form = () => {
   const [id, setId] = useState(nanoid());
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const dispatch = useDispatch()
 
   const handelNameChange = e => {
     setName(e.currentTarget.value);
@@ -19,7 +20,9 @@ export const Form = ({ onSubmit }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit({ id, name, number });
+
+    dispatch(addcontact({ id, name, number }));
+
     reset();
   };
   const reset = () => {
@@ -64,11 +67,7 @@ export const Form = ({ onSubmit }) => {
     </>
   );
 };
-Form.propTypes = {
-  onSubmit: PropTypes.func,
-};
-const mapDispatchToprops = dispatch => ({
-  onSubmit: text => dispatch(addcontact(text)),
-});
 
-export default connect(null, mapDispatchToprops)(Form);
+
+
+export default Form;

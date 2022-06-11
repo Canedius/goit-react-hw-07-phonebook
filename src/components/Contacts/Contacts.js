@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import s from '../Form/Form.module.css';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contacts/contact-action';
-function Contacts({ contacts, children, deleteContacts }) {
+function Contacts({ contacts, children,  }) {
+  const dispatch = useDispatch()
   return (
     <div className={s.wrap}>
       {children}
@@ -11,7 +12,7 @@ function Contacts({ contacts, children, deleteContacts }) {
           return (
             <li className={s.item} key={id}>
               {name}: {number}{' '}
-              <button onClick={() => deleteContacts(id)}>Delete</button>{' '}
+              <button onClick={() =>  dispatch(deleteContact(id))}>Delete</button>{' '}
             </li>
           );
         })}
@@ -28,9 +29,6 @@ Contacts.propTypes = {
     })
   ),
   children: PropTypes.node,
-  deleteContacts: PropTypes.func,
 };
-const mapDispatchToprops = dispatch => ({
-  deleteContacts: id => dispatch(deleteContact(id)),
-});
-export default connect(null, mapDispatchToprops)(Contacts);
+
+export default Contacts;

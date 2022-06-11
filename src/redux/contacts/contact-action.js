@@ -8,4 +8,3 @@ export const filterContact = createAction('filter/contact', e => ({
   payload: e.currentTarget.value,
 }));
 
-export const storage = createAction('storage/contacts');
