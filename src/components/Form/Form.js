@@ -1,14 +1,13 @@
-import PropTypes from 'prop-types';
-import { nanoid } from 'nanoid';
+
 import s from './Form.module.css';
 import { useState } from 'react';
-import {useDispatch } from 'react-redux';
-import { addcontact } from 'redux/contacts/contact-action';
+import { useCreateContactMutation } from 'redux/contacts/contact-slice';
 export const Form = () => {
-  const [id, setId] = useState(nanoid());
+  
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const dispatch = useDispatch()
+
+  const [createContacts] = useCreateContactMutation()
 
   const handelNameChange = e => {
     setName(e.currentTarget.value);
@@ -20,13 +19,10 @@ export const Form = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-
-    dispatch(addcontact({ id, name, number }));
-
+    createContacts({  name, number });
     reset();
   };
   const reset = () => {
-    setId(nanoid());
     setName('');
     setNumber('');
   };

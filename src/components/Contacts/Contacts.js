@@ -1,18 +1,19 @@
 import PropTypes from 'prop-types';
 import s from '../Form/Form.module.css';
-import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/contacts/contact-action';
-function Contacts({ contacts, children,  }) {
-  const dispatch = useDispatch()
-  return (
+import { useDeleteContactMutation } from 'redux/contacts/contact-slice';
+
+
+function Contacts({data,children  }) {
+  const [deleteContact]= useDeleteContactMutation()
+  return data && (
     <div className={s.wrap}>
       {children}
-      <ul>
-        {contacts.map(({ id, name, number }) => {
+      <ul className={s.list}>
+        {data.map(({ id, name, phone  }) => {
           return (
             <li className={s.item} key={id}>
-              {name}: {number}{' '}
-              <button onClick={() =>  dispatch(deleteContact(id))}>Delete</button>{' '}
+              <span>{name}: {phone}{' '}</span>
+              <button onClick={() => deleteContact(id)}>Delete</button>{' '}
             </li>
           );
         })}
@@ -21,13 +22,7 @@ function Contacts({ contacts, children,  }) {
   );
 }
 Contacts.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      name: PropTypes.string,
-      number: PropTypes.string,
-    })
-  ),
+  
   children: PropTypes.node,
 };
 

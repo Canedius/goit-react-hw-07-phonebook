@@ -14,8 +14,12 @@
   padding: 10px;
   width: 300px;
 }
+.list{
+  width: 350px ;
+  padding: 0;
+}
 .item {
   margin-top: 10px;
-
+   display: flex;
   justify-content: space-between;
 }
