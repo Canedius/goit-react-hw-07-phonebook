@@ -1,6 +1,13 @@
 import PropTypes from 'prop-types';
 import s from '../Form/Form.module.css';
-function Filter({filter,onChange}) {
+import { useDispatch } from 'react-redux';
+import { filterContact } from 'redux/contacts/contact-action';
+import { useSelector } from 'react-redux'
+import {getFilter } from 'redux/contacts/contact-selectors';;
+
+function Filter() {
+  const dispatch = useDispatch()
+  const filter = useSelector(getFilter)
   return (
     <label className={s.formLabel}>
       Find contacts by name
@@ -8,7 +15,7 @@ function Filter({filter,onChange}) {
         className={s.input}
         tupe="text"
         value={filter}
-        onChange={onChange}
+        onChange={(e)=>dispatch(filterContact(e))}
       />
     </label>
   );

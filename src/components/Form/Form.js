@@ -2,8 +2,9 @@
 import s from './Form.module.css';
 import { useState } from 'react';
 import { useCreateContactMutation } from 'redux/contacts/contact-slice';
+import { useFetchContactsQuery } from 'redux/contacts/contact-slice';
 export const Form = () => {
-  
+  const{data} = useFetchContactsQuery()
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -19,7 +20,9 @@ export const Form = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    createContacts({  name, number });
+    const flag = data.find(item => item.name === name);
+     flag ? (alert(`${name} is alredy in contacts`))
+     : createContacts({  name, number });
     reset();
   };
   const reset = () => {

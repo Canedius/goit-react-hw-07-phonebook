@@ -6,20 +6,20 @@ import { useState } from 'react';
 import { useFetchContactsQuery } from 'redux/contacts/contact-slice';
 
  const App =()=>{
-  const [filter, setFilter] = useState('');
-  const{data} = useFetchContactsQuery()
-  const normalizedFilter = filter.toLowerCase()
-  const visibleContacts = data && data.filter(contact =>contact.name.toLowerCase().includes(normalizedFilter))
+  // const [filter, setFilter] = useState('');
+  // const{data} = useFetchContactsQuery()
+  // const normalizedFilter = filter.toLowerCase()
+  // const visibleContacts = data && data.filter(contact =>contact.name.toLowerCase().includes(normalizedFilter))
 
-  const changeFilter = e => {
-  setFilter(e.currentTarget.value)};
+  // const changeFilter = e => {
+  // setFilter(e.currentTarget.value)};
 
     return (<div className={s.wrap}>
       <h2>Phonebook</h2>
       <Form/>
       <h2>Contacts</h2>
-      <ContactList data ={visibleContacts} >
-      <Filter filter={filter} onChange={changeFilter} />
+      <ContactList  >
+      <Filter/>
       </ContactList>
     </div>)
   
